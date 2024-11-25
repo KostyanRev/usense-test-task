@@ -12,9 +12,9 @@ export const getPasswordStrength = (
   if (!password) return "empty";
   if (password.length < 8) return "short";
 
-  const hasLetters = /[a-zA-Z]/.test(password);
+  const hasLetters = /\p{L}/u.test(password);
   const hasDigits = /[0-9]/.test(password);
-  const hasSymbols = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+  const hasSymbols = /[!@#$%^&*(),.?"_:;{}|<>]/.test(password);
 
   if (hasLetters && hasDigits && hasSymbols) return "strong";
   if (
